@@ -1657,6 +1657,19 @@ img {
 .btn.info:active, .skiplink.info:active {
   background: #313436;
 }
+.btn.weibo, .skiplink.weibo{
+  background: red
+  border: 1px solid red;
+}
+
+.btn.danger:hover, .skiplink.danger:hover {
+  background: white;
+}
+
+.btn.danger:active, .skiplink.danger:active {
+  background: red;
+}
+
 .btn.danger, .skiplink.danger {
   background: #ca3838;
   border: 1px solid #ca3838;
