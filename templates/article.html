@@ -31,7 +31,7 @@
             </div><!-- /.entry-content -->
             {% if DISQUS_SITENAME %}
             <div class="comments">
-              <h3>Comments</h3>
+              <!-- need not a <h3>Comments</h3> header because DUOSHUO already has one -->
               <div id="disqus_thread"></div>
               <script type="text/javascript">
                 var disqus_identifier = "{{ article.url }}";
@@ -45,7 +45,7 @@
             {% endif %}
             {% if DUOSHUO_SITENAME and SITEURL and article.status != "draft" %}
                 <section>
-                    <h1>Comments</h1>
+                    <h3>Comments</h3>
                     <div id="DuoShuoComment" aria-live="polite">
                       {% include 'DuoShuo_Script.html' %}
                       {% include 'DuoShuo_thread.html' %}
