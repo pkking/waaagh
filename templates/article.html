@@ -45,7 +45,6 @@
             {% endif %}
             {% if DUOSHUO_SITENAME and SITEURL and article.status != "draft" %}
                 <section>
-                    <h3>Comments</h3>
                     <div id="DuoShuoComment" aria-live="polite">
                       {% include 'DuoShuo_Script.html' %}
                       {% include 'DuoShuo_thread.html' %}
