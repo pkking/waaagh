@@ -26,7 +26,7 @@ html {
 }
 
 ol, ul {
-  /*list-style: none;*/
+  list-style: none;
 }
 
 table {
@@ -254,7 +254,7 @@ ul, ol {
 }
 
 ul {
-  /*list-style: none outside;*/
+  list-style: none outside;
 }
 
 ol {
@@ -4901,7 +4901,7 @@ form textarea {
 }
 form ul, form ul li {
   margin-left: 0;
-  /*list-style-type: none;*/
+  list-style-type: none;
 }
 form fieldset {
   border-style: solid;
@@ -7107,4 +7107,17 @@ footer#credits .socbtns {
 
 #templates {
   padding-bottom: 200px;
+}
+
+div.entry-content ul  {
+  list-style-type: inherit;
+  
+}
+
+div.entry-content  ul  ul{
+  list-style-type: square;
+}
+
+div.entry-content ul ul ul{
+  list-style-type: circle;
 }
