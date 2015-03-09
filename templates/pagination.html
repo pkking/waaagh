@@ -1,15 +1,35 @@
 {% if DEFAULT_PAGINATION %}
-<p class="paginator">
+<nav>
+  <ul class="pagination">
     {% if articles_page.has_previous() %}
-        {% if articles_page.previous_page_number() == 1 %}
-            <a href="{{ SITEURL }}/{{ page_name }}.html"><i class="icon-arrow-left"></i></a>
+    <li>
+    {% else %}
+    <li class="disabled">
+    {% endif %}
+      <a href="{{ SITEURL }}/{{ page_name }}.html" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% for p in range(1,articles_paginator.num_pages+1) %}
+      {% if p == articles_page.number %}
+        {% if p == 1 %}
+          <li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ p }}</li>
         {% else %}
-            <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.previous_page_number() }}.html"><i class="icon-arrow-left"></i></a>
+          <li class="active"><a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html">{{ p }}</li>
         {% endif %}
-    {% endif %}
-    页码 {{ articles_page.number }} / {{ articles_paginator.num_pages }}
-    {% if articles_page.has_next() %}
-        <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html"><i class="icon-arrow-right"></i></a>
-    {% endif %}
-</p>
+      {% else %}
+        {% if p == 1 %}
+          <li ><a href="{{ SITEURL }}/{{ page_name }}.html">{{ p }}</li>
+        {% else %}
+          <li ><a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html">{{ p }}</li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <li>
+      <a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 {% endif %}

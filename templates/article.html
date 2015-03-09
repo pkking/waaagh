@@ -1,38 +1,33 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title|striptags }}{% endblock %}
 {% block content %}
-<section id="content" class="body">
-
+<div class="container">
    <div class="row">
-        <div class="eleven columns">
-
-
+        <div class="col-xs-8">
             <header>
-              <h2 class="entry-title">
+              <h2>
                 <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
                    title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
            {% import 'translations.html' as translations with context %}
            {{ translations.translations_for(article) }}
             </header>
-            <footer class="post-info">
-              <abbr class="published" title="{{ article.date.isoformat() }}">
-                {{ article.locale_date }}
-              </abbr>
+            <div class="container">
+              <address>{{ article.locale_date }} </address>
               {% if article.authors %}
-              <address class="vcard author">作者 
+              <address> 作者 
               {% for author in article.authors|sort %}
                 <a class="url fn" href="{{ SITEURL }}/{{ author.url }}"> {{ author }}</a>
               {% endfor %}
               </address>
               {% endif %}
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
+            </div><!-- /.post-info -->
+            <div class="container">
               {{ article.content }}
             </div><!-- /.entry-content -->
             {% if DISQUS_SITENAME %}
             <div class="comments">
               <!-- need not a <h3>Comments</h3> header because DUOSHUO already has one -->
-              <div id="disqus_thread"></div>
+              <div id="disqus_thread" data-thread-key="{{ article.url }}" data-title="{{ article.title}}"></div>
               <script type="text/javascript">
                 var disqus_identifier = "{{ article.url }}";
                 (function() {
@@ -59,5 +54,5 @@
  </div><!-- /.row -->
 
 
-</section>
+</div>
 {% endblock %}

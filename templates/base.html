@@ -33,108 +33,79 @@
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/pygment.css" />
-
-        <script src="{{ SITEURL }}/theme/js/libs/modernizr-2.6.2.min.js"></script>
-
+        <link href="http://fonts.useso.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet">
+        <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
         {% endblock head %}
 </head>
 
 <body id="index" class="home">
-
-
+  <div class="page-header">
+    <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
+  </div>
+  <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{ SITEURL }}">
+          <img alt="Brand" src="{{ SITEURL }}/theme/ico/waaagh.ico">
+        </a>    
+      </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a class="active" href="{{ SITEURL }}/">主页</a></li>  
+      {% for title, link in MENUITEMS %}
+        <li><a href="{{ link }}">{{ title }}</a></li>
+      {% endfor %}
+      {% if DISPLAY_PAGES_ON_MENU %}
+        {% for p in PAGES %}
+          <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+        {% endfor %}
+      {% else %}
+        {% if DISPLAY_CATEGORIES_ON_MENU %}
+          {% for cat, null in categories %}
+            <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+      </ul>
+    </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+   
+    <footer class="footer">
+      <div class="container">
         <div class="row">
-
-          <header id="banner" class="body">
-                  <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
-          </header><!-- /#banner -->
-
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-             
-              <ul class="columns">
-                <li><a href="{{ SITEURL }}/">主页</a></li>
-
-            {% for title, link in MENUITEMS %}
-                <li><a href="{{ link }}">{{ title }}</a></li>
-            {% endfor %}
-            {% if DISPLAY_PAGES_ON_MENU %}
-              {% for p in PAGES %}
-                <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-              {% endfor %}
-            {% else %}
-              {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% for cat, null in categories %}
-                  <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                {% endfor %}
-              {% endif %}
-            {% endif %}
-
-              </ul>
-            </div>
-
-          {% block content %}
-
-          {% endblock %}
-
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-    
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    眼前所见由<a href="http://getpelican.com/">Pelican</a> 生成.
-                    <br />
-                    本主题基于 <a target="_blank" href="https://github.com/getpelican/pelican-themes/tree/master/gum">Pelican theme GUM</a>
-                    </address>
+          <div class="col-xs-12 col-sm-4">
+            <p>眼前所见由<a href="http://getpelican.com/">Pelican</a> 生成.</p>
           </div>
 
 
-          <div class="seven columns">
+          <div class="col-xs-12 col-sm-offset-4 col-sm-4">
             <div class="row">
-              <ul class="socbtns">
+              <div class="btn-group" role="group" aria-label="social buttons">
                 {% if WEIBO %}
-                <li><div class="btn weibo"><a href="{{ WEIBO_URL }}" target="_blank">Weibo</a></div></li>
+                <button type="button" class="btn btn-danger"><a href="{{ WEIBO_URL }}" target="_blank">Weibo</a></button>
                 {% endif %}
 
                 {% if GITHUB_URL %}
-                <li><div class="btn primary"><a href="{{ GITHUB_URL }}" target="_blank">Github</a></div></li>
+                <button type="button" class="btn btn-primary"><a href="{{ GITHUB_URL }}" target="_blank">Github</a></button>
                 {% endif %}
 
                 {% if TWITTER_URL %}
-                <li><div class="btn twitter"><a href="{{ TWITTER_URL }}" target="_blank">Twitter</a></div></li>
+                <button type="button" class="btn btn-info"><a href="{{ TWITTER_URL }}" target="_blank">Twitter</a></button>
                 {% endif %}
 
-                {% if FACEBOOK_URL %}
-                <li><div class="btn facebook"><a href="{{ FACEBOOK_URL }}" target="_blank">Facebook</a></div></li>
-                {% endif %}
-
-                {% if GOOGLEPLUS_URL %}
-                <li><div class="btn danger"><a href="{{ GOOGLEPLUS_URL }}" target="_blank">Google+</a></div></li>
-                {% endif %}
-
-              </ul>
+              </div>
             </div>
           </div>
-        </footer>
+        </div>
+      </div>
+    </footer>
 
-    </div>
 
 
 {% include 'disqus_script.html' %}
-{% include 'piwik.html' %}
-  <script src="{{ SITEURL }}/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="{{ SITEURL }}/theme/js/libs/gumby.min.js"></script>
-  <script src="{{ SITEURL }}/theme/js/plugins.js"></script>
+  <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<section id="content">
+<div class="container">
 {% block content_title %}
 
 {% endblock %}
@@ -9,47 +9,42 @@
    <div class="row">
 
 
-        <div class="eleven columns">
-                 <ol id="post-list">
+        <div class="col-xs-8">
+                <ol>
                 {% for article in articles_page.object_list %}
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+                        <li><div class="container">
+                                <header> <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
+                                <div class="container">
+                                    <address> {{ article.locale_date }} </abbress>
                                     {% if article.authors %}
-                                    <address class="vcard author">作者 
+                                    <address>作者 
                                     {% for author in article.authors|sort %}
-                                    <a class="url fn" href="{{ SITEURL }}/{{ author.url }}"> {{ author }}</a>
+                                    <a href="{{ SITEURL }}/{{ author.url }}"> {{ author }}</a>
                                     {% endfor %}
                                     </address>
                                     {% endif %}
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> {{ article.summary }} </div><!-- /.entry-content -->
+                                </div><!-- /.post-info -->
+                                <div class="container"> {{ article.summary }} </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="btn btn-primary"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Read more <span class="glyphicon glyphicon-arrow-right"></span></a></div>
 
-
-
-                                <div class="row tag-row">
-                                    {% if article.tags %}
-                                        <span>标签 : </span>
-                                        {% for tag in article.tags %}
-                                            <a class="danger label" href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-
-
-
-                        </article></li>
+                                {% if article.tags %}
+                                      <span>标签 : </span>
+                                      {% for tag in article.tags %}
+                                      <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-danger" aria-expanded="false">
+                                          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a>
+                                        </button>
+                                      </div>
+                                      {% endfor %}
+                                {% endif %}
+                        </div></li>
                 {% endfor %}
                 </ol><!-- /#posts-list -->
-
         </div><!-- /.eleven.columns -->
-        
      {% include 'sidebar.html' %}
  </div><!-- /.row -->
 
 {% include 'pagination.html' %}
-</section><!-- /#content -->
+</div><!-- /#container -->
 {% endblock content %}
