@@ -11,8 +11,8 @@
            {% import 'translations.html' as translations with context %}
            {{ translations.translations_for(article) }}
             </header>
-            <div class="container">
-              <address>{{ article.locale_date }} </address>
+            <div >
+              <addr>{{ article.locale_date }} </addr>
               {% if article.authors %}
               <address> 作者 
               {% for author in article.authors|sort %}
@@ -21,13 +21,13 @@
               </address>
               {% endif %}
             </div><!-- /.post-info -->
-            <div class="container">
+            <div id="content">
               {{ article.content }}
             </div><!-- /.entry-content -->
             {% if DISQUS_SITENAME %}
             <div class="comments">
               <!-- need not a <h3>Comments</h3> header because DUOSHUO already has one -->
-              <div id="disqus_thread" data-thread-key="{{ article.url }}" data-title="{{ article.title}}"></div>
+              <div class="ds-thread" data-thread-key="{{ article.title}}" data-title="{{ article.title}}"></div>
               <script type="text/javascript">
                 var disqus_identifier = "{{ article.url }}";
                 (function() {

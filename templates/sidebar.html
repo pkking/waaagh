@@ -1,8 +1,8 @@
-<div class="col-xs-offset-1 col-xs-3">
+<div id="sidebar" class="col-xs-offset-1 col-xs-3">
 
 <h4>其他</h4>
 
- <ul>
+ <ul class="list-unstyled">
   {% for title, link in MENUITEMS %}
       <li><a href="{{ link }}">{{ title }}</a></li>
   {% endfor %}
@@ -21,7 +21,7 @@
 
 <h4>目录</h4>
 {% if categories %}
-<ul>
+<ul class="list-unstyled">
 	{% for cat, null in categories %}
 		<li><a href="{{ SITEURL }}/{{ cat.url|e }}">{{ cat }}</a></li>
 	{% endfor %}
@@ -31,7 +31,7 @@
 
 <h4>标签</h4>
 {% if tags %}
-	<ul>
+	<ul class="list-unstyled">
 	{% for tag in tag_cloud %}
 	    <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0|e }}</a></li>
 	{% endfor %}
@@ -42,7 +42,7 @@
 {% if SOCIAL %}
 <nav class="nav navbar-nav nav-stacked">
   <h4>社交</h4>
-  <ul>
+  <ul class="list-unstyled">
   {% for name, url in SOCIAL %}
     <li><a href="{{ url|e }}">{{ name }}</a></li>
   {% endfor %}

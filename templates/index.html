@@ -4,44 +4,43 @@
 {% block content_title %}
 
 {% endblock %}
-
-
-   <div class="row">
-
-
-        <div class="col-xs-8">
-                <ol>
-                {% for article in articles_page.object_list %}
-                        <li><div class="container">
-                                <header> <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
-                                <div class="container">
-                                    <address> {{ article.locale_date }} </abbress>
-                                    {% if article.authors %}
-                                    <address>作者 
-                                    {% for author in article.authors|sort %}
-                                    <a href="{{ SITEURL }}/{{ author.url }}"> {{ author }}</a>
-                                    {% endfor %}
-                                    </address>
-                                    {% endif %}
-                                </div><!-- /.post-info -->
-                                <div class="container"> {{ article.summary }} </div><!-- /.entry-content -->
-
-                                <div class="btn btn-primary"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Read more <span class="glyphicon glyphicon-arrow-right"></span></a></div>
-
-                                {% if article.tags %}
-                                      <span>标签 : </span>
-                                      {% for tag in article.tags %}
-                                      <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-danger" aria-expanded="false">
-                                          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a>
-                                        </button>
-                                      </div>
-                                      {% endfor %}
-                                {% endif %}
-                        </div></li>
+<div class="row">
+  <div class="col-xs-8">
+    <ul class="list-unstyled list-group">
+      {% for article in articles_page.object_list %}
+        <li>
+          <div >
+            <header> <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
+            <div >
+                <addr> {{ article.locale_date }} </abbr>
+                {% if article.authors %}
+                <address>作者 
+                {% for author in article.authors|sort %}
+                <a href="{{ SITEURL }}/{{ author.url }}"> {{ author }}</a>
                 {% endfor %}
-                </ol><!-- /#posts-list -->
-        </div><!-- /.eleven.columns -->
+                </address>
+                {% endif %}
+            </div><!-- /.post-info -->
+            <div id="content"> {{ article.summary }} </div><!-- /.entry-content -->
+            <div id="readmore">
+              <a role="button" class="btn btn-primary" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}"> Read more  <span class="glyphicon glyphicon-arrow-right"></span></a>
+            </div>
+
+            <div id="tags">
+            {% if article.tags %}
+              标签 : 
+              {% for tag in article.tags %}
+              <div class="btn-group">
+                <a role="button" type="button" class="btn btn-sm btn-danger" aria-expanded="false" href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a>
+              </div>
+              {% endfor %}
+            {% endif %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul><!-- /#posts-list -->
+  </div><!-- /.eleven.columns -->
      {% include 'sidebar.html' %}
  </div><!-- /.row -->
 

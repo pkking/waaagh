@@ -35,13 +35,12 @@
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
         <link href="http://fonts.useso.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet">
         <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/waaagh.css">
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/pygment.css" />
         {% endblock head %}
 </head>
 
-<body id="index" class="home">
-  <div class="page-header">
-    <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
-  </div>
+<body >
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <div class="navbar-header">
@@ -69,6 +68,11 @@
       </ul>
     </div>
     </nav>
+    <div class="container">
+    <div class="page-header">
+      <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
+    </div>
+  </div>
     {% block content %}
     {% endblock %}
    
@@ -76,23 +80,27 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-4">
-            <p>眼前所见由<a href="http://getpelican.com/">Pelican</a> 生成.</p>
+            <address>
+            眼前所见由<a href="http://getpelican.com/">Pelican</a> 生成.
+            本主题 <a href="https://github.com/pkking/waaagh">waaagh</a> 基于<a href="http://getbootstrap.com/">Bootstrap 3</a>.
+            </address>
+
           </div>
 
 
           <div class="col-xs-12 col-sm-offset-4 col-sm-4">
             <div class="row">
               <div class="btn-group" role="group" aria-label="social buttons">
-                {% if WEIBO %}
-                <button type="button" class="btn btn-danger"><a href="{{ WEIBO_URL }}" target="_blank">Weibo</a></button>
+                {% if WEIBO_URL %}
+                <a role="button" type="button" class="btn btn-danger" href="{{ WEIBO_URL }}" target="_blank">Weibo</a>
                 {% endif %}
 
                 {% if GITHUB_URL %}
-                <button type="button" class="btn btn-primary"><a href="{{ GITHUB_URL }}" target="_blank">Github</a></button>
+                <a role="button" type="button" class="btn btn-primary" href="{{ GITHUB_URL }}" target="_blank">Github</a>
                 {% endif %}
 
                 {% if TWITTER_URL %}
-                <button type="button" class="btn btn-info"><a href="{{ TWITTER_URL }}" target="_blank">Twitter</a></button>
+                <a role="button" type="button" class="btn btn-info" href="{{ TWITTER_URL }}" target="_blank">Twitter</a>
                 {% endif %}
 
               </div>

@@ -13,15 +13,15 @@
     {% for p in range(1,articles_paginator.num_pages+1) %}
       {% if p == articles_page.number %}
         {% if p == 1 %}
-          <li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ p }}</li>
+          <li class="active"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ p }}</a></li>
         {% else %}
-          <li class="active"><a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html">{{ p }}</li>
+          <li class="active"><a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html">{{ p }}</a></li>
         {% endif %}
       {% else %}
         {% if p == 1 %}
-          <li ><a href="{{ SITEURL }}/{{ page_name }}.html">{{ p }}</li>
+          <li ><a href="{{ SITEURL }}/{{ page_name }}.html">{{ p }}</a></li>
         {% else %}
-          <li ><a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html">{{ p }}</li>
+          <li ><a href="{{ SITEURL }}/{{ page_name }}{{articles_paginator.num_pages }}.html">{{ p }}</a></li>
         {% endif %}
       {% endif %}
     {% endfor %}
