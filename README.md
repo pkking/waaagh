@@ -1,6 +1,6 @@
 ### What is waaagh?
 
-waaagh is a [Pelican](https://github.com/getpelican/pelican) theme based on [Gum](https://github.com/getpelican/pelican-themes/tree/master/gum), which based on the [Gumby Framework](http://gumbyframework.com/docs).
+waaagh is a [Pelican](https://github.com/getpelican/pelican) theme
 
 ### Requirements
 
@@ -18,36 +18,16 @@ GOOGLEPLUS_URL = ''
 WEIBO_URL = ''
 ```
 
-This theme uses the latest Google Analytics code, which will be included when the following values are filled out appropriately.
-
-```
-GOOGLE_ANALYTICS_ID = ''
-GOOGLE_ANALYTICS_SITENAME = ''
-```
-
-Alternatively you can use [Piwik](http://piwik.org/) for analytics if you set the following settings, where the url has to be given without leading `http://` and trailing `/`.
-
-```
-PIWIK_ID = ''
-PIWIK_URL = ''
-```
-
 To use [duoshuo](http://duoshuo.com/) for comments, fill out the following values, again the url without leading `http://` and trailing `/`.
 
 ```
 DUOSHUO_SITENAME = '' 
 ```
 
-### Screenshot ###
-
-![screenshot](screenshot.png)
-
 ### Credits / Thanks
 
  * Alexis Metaireau / Pelican
- * Digital Surgeons / Gumby Framework
  * Twitter Bootstrap
- * traeblain for his [makefile](https://gist.github.com/traeblain/4252511) gist for building Pelican on Windows
 
 **MIT Open Source License**
 
