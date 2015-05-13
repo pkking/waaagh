@@ -1,6 +1,6 @@
 {% if DUOSHUO_SITENAME and SITEURL and article.status != "draft" %}
     <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
+    <div class="ds-thread" data-thread-key="{{ article.date|strftime('%Y%m%d%H%M%S') }}" data-title="{{ article.title}}"></div>
     <script type="text/javascript">
     var duoshuoQuery = {short_name:"{{ DUOSHUO_SITENAME }}"};
     (function() {

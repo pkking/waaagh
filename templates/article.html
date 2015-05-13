@@ -24,20 +24,7 @@
             <div id="content">
               {{ article.content }}
             </div><!-- /.entry-content -->
-            {% if DISQUS_SITENAME %}
-            <div class="comments">
-              <!-- need not a <h3>Comments</h3> header because DUOSHUO already has one -->
-              <div class="ds-thread" data-thread-key="{{ article.date|strftime('%Y%m%d%H%M%S') }}" data-title="{{ article.title}}"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "{{ article.url }}";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://{{ DISQUS_SITENAME }}.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
-            {% endif %}
+           
             {% if DUOSHUO_SITENAME and SITEURL and article.status != "draft" %}
                 <section>
                     <div id="DuoShuoComment" aria-live="polite">
