@@ -14,10 +14,3 @@ body, html {
 .btn {
 	margin: 2pt 0pt 2pt 0pt;
 }
-
-#sidebar {
-	position: fixed;
-	right: 0;
-	top: 0;
-	padding-top: 50px;
-}
