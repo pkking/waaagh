@@ -1,13 +1,16 @@
 /* lcr */
 
-#content {
-	font-family:"Source Sans Pro",Georgia, 
+body {
+	font-family:"Source Sans Pro", Ubuntu, Georgia, 
 				STXihei, "华文细黑", 
              "Microsoft YaHei", "微软雅黑", 
              serif;
-    font-size: 11pt;
 }
 
 .btn {
 	margin: 2pt 0pt 2pt 0pt;
+}
+
+.footer {
+	background-color: #f5f5f5;
 }
